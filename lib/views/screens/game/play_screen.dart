@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -194,8 +193,8 @@ class _PlayScreenState extends State<PlayScreen> {
                         children: [
                           selectedGame == 4
                               ? Image.asset(
-                                  'assets/images/logo.webp',
-                                  height: 80.h,
+                                  'assets/images/four.webp',
+                                  height: 100.h,
                                 )
                               : ColorFiltered(
                                   colorFilter: ColorFilter.mode(
@@ -204,8 +203,8 @@ class _PlayScreenState extends State<PlayScreen> {
                                     BlendMode.darken, // This darkens the image
                                   ),
                                   child: Image.asset(
-                                    'assets/images/logo.webp',
-                                    height: 80.h,
+                                    'assets/images/four.webp',
+                                    height: 100.h,
                                   ),
                                 ),
                           SizedBox(height: 10.h),
@@ -229,8 +228,8 @@ class _PlayScreenState extends State<PlayScreen> {
                         children: [
                           selectedGame == 5
                               ? Image.asset(
-                                  'assets/images/logo.webp',
-                                  height: 80.h,
+                                  'assets/images/five.webp',
+                                  height: 100.h,
                                 )
                               : ColorFiltered(
                                   colorFilter: ColorFilter.mode(
@@ -239,8 +238,8 @@ class _PlayScreenState extends State<PlayScreen> {
                                     BlendMode.darken, // This darkens the image
                                   ),
                                   child: Image.asset(
-                                    'assets/images/logo.webp',
-                                    height: 80.h,
+                                    'assets/images/five.webp',
+                                    height: 100.h,
                                   ),
                                 ),
                           SizedBox(height: 10.h),
@@ -270,8 +269,8 @@ class _PlayScreenState extends State<PlayScreen> {
                         children: [
                           selectedGame == 6
                               ? Image.asset(
-                                  'assets/images/logo.webp',
-                                  height: 80.h,
+                                  'assets/images/six.webp',
+                                  height: 100.h,
                                 )
                               : ColorFiltered(
                                   colorFilter: ColorFilter.mode(
@@ -280,8 +279,8 @@ class _PlayScreenState extends State<PlayScreen> {
                                     BlendMode.darken, // This darkens the image
                                   ),
                                   child: Image.asset(
-                                    'assets/images/logo.webp',
-                                    height: 80.h,
+                                    'assets/images/six.webp',
+                                    height: 100.h,
                                   ),
                                 ),
                           SizedBox(height: 10.h),
@@ -305,8 +304,8 @@ class _PlayScreenState extends State<PlayScreen> {
                         children: [
                           selectedGame == 8
                               ? Image.asset(
-                                  'assets/images/logo.webp',
-                                  height: 80.h,
+                                  'assets/images/eight.webp',
+                                  height: 100.h,
                                 )
                               : ColorFiltered(
                                   colorFilter: ColorFilter.mode(
@@ -315,8 +314,8 @@ class _PlayScreenState extends State<PlayScreen> {
                                     BlendMode.darken, // This darkens the image
                                   ),
                                   child: Image.asset(
-                                    'assets/images/logo.webp',
-                                    height: 80.h,
+                                    'assets/images/eight.webp',
+                                    height: 100.h,
                                   ),
                                 ),
                           SizedBox(height: 10.h),

@@ -21,7 +21,7 @@ class SplashScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/images/logo.webp',
+              'assets/images/four.webp',
               height: 80.h,
             ),
             SizedBox(height: 30.h),
