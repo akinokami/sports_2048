@@ -26,9 +26,7 @@ class MyApp extends StatelessWidget {
       builder: (_, child) {
         return GetMaterialApp(
           title: 'picture_match'.tr,
-          theme: ThemeData(
-            primarySwatch: Colors.green,
-          ),
+          theme: ThemeData(primarySwatch: Colors.brown),
           // theme: CustomTheme.lightTheme,
           // darkTheme: CustomTheme.darkTheme,
           // themeMode: ThemeMode.system,

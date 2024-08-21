@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:sports_2048/models/board.dart';
+import 'package:sports_2048/services/local_storage.dart';
 import 'package:sports_2048/utils/colors.dart';
 import 'package:sports_2048/utils/constants.dart';
 import 'package:sports_2048/utils/query_data.dart';
@@ -22,14 +23,15 @@ class _BoardScreenState extends State<BoardScreen> {
   late Board _board;
   late int _row;
   late int _column;
+  int highScore = 0;
 
   @override
   void initState() {
     super.initState();
     _row = 4;
     _column = 4;
-    _board = Board(_row, _column);
-
+    highScore = LocalStorage.instance.read(four) ?? 0;
+    _board = Board(_row, _column, highScore);
     newGame();
   }
 
@@ -119,7 +121,7 @@ class _BoardScreenState extends State<BoardScreen> {
                 ),
                 Toggle(
                   title: 'high_score'.tr,
-                  subTitle: _board.score.toString(),
+                  subTitle: _board.highScore.toString(),
                 ),
               ],
             ),

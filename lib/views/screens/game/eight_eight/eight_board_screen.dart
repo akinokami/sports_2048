@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:sports_2048/models/board%20_eight.dart';
+import 'package:sports_2048/services/local_storage.dart';
 
 import 'package:sports_2048/utils/colors.dart';
 import 'package:sports_2048/utils/constants.dart';
@@ -23,13 +24,15 @@ class _EightBoardScreenState extends State<EightBoardScreen> {
   late BoardEight _board;
   late int _row;
   late int _column;
+  int highScore = 0;
 
   @override
   void initState() {
     super.initState();
     _row = 8;
     _column = 8;
-    _board = BoardEight(_row, _column);
+    highScore = LocalStorage.instance.read(eight) ?? 0;
+    _board = BoardEight(_row, _column, highScore);
 
     newGame();
   }
@@ -121,7 +124,7 @@ class _EightBoardScreenState extends State<EightBoardScreen> {
                 ),
                 Toggle(
                   title: 'high_score'.tr,
-                  subTitle: _board.score.toString(),
+                  subTitle: _board.highScore.toString(),
                 ),
               ],
             ),

@@ -48,5 +48,9 @@ class Constants {
 String language = 'language';
 String mute = 'isMuted';
 String first = 'first';
+String four = 'four';
+String five = 'five';
+String six = 'six';
+String eight = 'eight';
 
 enum Language { en, vi }

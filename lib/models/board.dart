@@ -1,14 +1,17 @@
 import 'dart:math' show Random;
 
 import 'package:sports_2048/models/tile.dart';
+import 'package:sports_2048/services/local_storage.dart';
+import 'package:sports_2048/utils/constants.dart';
 
 class Board {
   final int row;
   final int column;
   late int score;
   late List<List<Tile>> _tiles;
+  int highScore;
 
-  Board(this.row, this.column);
+  Board(this.row, this.column, this.highScore);
 
   void initBoard() {
     _tiles = List.generate(4, (r) {
@@ -149,7 +152,7 @@ class Board {
     return !a.canMerge && ((b.isEmpty && !a.isEmpty) || (!a.isEmpty && a == b));
   }
 
-  void merge(Tile a, Tile b) {
+  void merge(Tile a, Tile b) async {
     if (!canMerge(a, b)) {
       if (!a.isEmpty && !b.canMerge) {
         b.canMerge = true;
@@ -165,6 +168,10 @@ class Board {
       a.value = 0;
       score += b.value;
       b.canMerge = true;
+      if (score > highScore) {
+        highScore = score;
+        await LocalStorage.instance.write(four, highScore);
+      }
     }
   }
 

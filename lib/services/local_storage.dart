@@ -16,7 +16,7 @@ class LocalStorage {
     box = GetStorage();
   }
 
-  T? read<T>(String key) {
+  dynamic read(String key) {
     return box.read(key);
   }
 

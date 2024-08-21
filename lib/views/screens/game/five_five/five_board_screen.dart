@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:sports_2048/models/board_five.dart';
+import 'package:sports_2048/services/local_storage.dart';
 import 'package:sports_2048/utils/colors.dart';
 import 'package:sports_2048/utils/constants.dart';
 import 'package:sports_2048/utils/query_data.dart';
@@ -22,14 +23,15 @@ class _FiveBoardScreenState extends State<FiveBoardScreen> {
   late BoardFive _board;
   late int _row;
   late int _column;
+  int highScore = 0;
 
   @override
   void initState() {
     super.initState();
     _row = 5;
     _column = 5;
-    _board = BoardFive(_row, _column);
-
+    highScore = LocalStorage.instance.read(five) ?? 0;
+    _board = BoardFive(_row, _column, highScore);
     newGame();
   }
 
@@ -120,7 +122,7 @@ class _FiveBoardScreenState extends State<FiveBoardScreen> {
                 ),
                 Toggle(
                   title: 'high_score'.tr,
-                  subTitle: _board.score.toString(),
+                  subTitle: _board.highScore.toString(),
                 ),
               ],
             ),
