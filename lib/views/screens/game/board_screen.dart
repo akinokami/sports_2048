@@ -108,111 +108,171 @@ class _BoardScreenState extends State<BoardScreen> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Column(
-          children: [
-            CustomText(
-              text: '2048',
-              size: 24.sp,
-              fontWeight: FontWeight.bold,
-              textColor: Colors.grey.shade700,
-            ),
-            SizedBox(height: 10.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        LayoutBuilder(
+            builder: (BuildContext context, BoxConstraints constraints) {
+          if (constraints.maxWidth >= 600) {
+            return Column(
               children: [
-                Toggle(
-                  title: 'score'.tr,
-                  subTitle: _board.score.toString(),
+                CustomText(
+                  text: '2048',
+                  size: 24.sp,
+                  fontWeight: FontWeight.bold,
+                  textColor: Colors.grey.shade700,
                 ),
-                Toggle(
-                  title: 'high_score'.tr,
-                  subTitle: _board.highScore.toString(),
+                SizedBox(height: 10.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      width: 1.sw * 0.35,
+                      padding: EdgeInsets.all(5.w),
+                      decoration: BoxDecoration(
+                          color: const Color(0xffcdc1b4),
+                          borderRadius: BorderRadius.circular(5.r)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CustomText(
+                            text: 'score'.tr,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          CustomText(
+                            text: _board.score.toString(),
+                            size: 10.sp,
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: 1.sw * 0.35,
+                      padding: EdgeInsets.all(5.w),
+                      decoration: BoxDecoration(
+                          color: const Color(0xffcdc1b4),
+                          borderRadius: BorderRadius.circular(5.r)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CustomText(
+                            text: 'high_score'.tr,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          CustomText(
+                            text: _board.highScore.toString(),
+                            size: 10.sp,
+                          )
+                        ],
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Get.to(() => const SettingScreen());
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(5.w),
+                        decoration: BoxDecoration(
+                            color: const Color(0xffcdc1b4),
+                            borderRadius: BorderRadius.circular(5.r)),
+                        child: Icon(
+                          Icons.settings,
+                          size: 25.sp,
+                        ),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        constants.showDialog(
+                            'restart'.tr, 'are_you_sure_to_restart'.tr, () {
+                          newGame();
+                          Get.back();
+                        });
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(5.w),
+                        decoration: BoxDecoration(
+                            color: const Color(0xffcdc1b4),
+                            borderRadius: BorderRadius.circular(5.r)),
+                        child: Icon(
+                          Icons.restart_alt,
+                          size: 25.sp,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
-            ),
-            SizedBox(height: 10.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                InkWell(
-                  onTap: () {
-                    Get.to(() => const SettingScreen());
-                  },
-                  child: Container(
-                    padding: EdgeInsets.all(5.w),
-                    decoration: BoxDecoration(
-                        color: const Color(0xffcdc1b4),
-                        borderRadius: BorderRadius.circular(5.r)),
-                    child: Icon(
-                      Icons.settings,
-                      size: 25.sp,
+            );
+          }
+          return Column(
+            children: [
+              CustomText(
+                text: '2048',
+                size: 24.sp,
+                fontWeight: FontWeight.bold,
+                textColor: Colors.grey.shade700,
+              ),
+              SizedBox(height: 10.h),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Toggle(
+                    title: 'score'.tr,
+                    subTitle: _board.score.toString(),
+                  ),
+                  Toggle(
+                    title: 'high_score'.tr,
+                    subTitle: _board.highScore.toString(),
+                  ),
+                ],
+              ),
+              SizedBox(height: 10.h),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      Get.to(() => const SettingScreen());
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(5.w),
+                      decoration: BoxDecoration(
+                          color: const Color(0xffcdc1b4),
+                          borderRadius: BorderRadius.circular(5.r)),
+                      child: Icon(
+                        Icons.settings,
+                        size: 25.sp,
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  width: 10.w,
-                ),
-                InkWell(
-                  onTap: () {
-                    constants.showDialog(
-                        'restart'.tr, 'are_you_sure_to_restart'.tr, () {
-                      newGame();
-                      Get.back();
-                    });
-                  },
-                  child: Container(
-                    padding: EdgeInsets.all(5.w),
-                    decoration: BoxDecoration(
-                        color: const Color(0xffcdc1b4),
-                        borderRadius: BorderRadius.circular(5.r)),
-                    child: Icon(
-                      Icons.restart_alt,
-                      size: 25.sp,
+                  SizedBox(
+                    width: 10.w,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      constants.showDialog(
+                          'restart'.tr, 'are_you_sure_to_restart'.tr, () {
+                        newGame();
+                        Get.back();
+                      });
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(5.w),
+                      decoration: BoxDecoration(
+                          color: const Color(0xffcdc1b4),
+                          borderRadius: BorderRadius.circular(5.r)),
+                      child: Icon(
+                        Icons.restart_alt,
+                        size: 25.sp,
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  width: 25.w,
-                ),
-              ],
-            )
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //   children: [
-            //     SizedBox(
-            //       width: toggleWidth,
-            //       height: toggleHeight,
-            //       child: ElevatedButton(
-            //         onPressed: () {},
-            //         child: Text(
-            //           'Undo',
-            //         ),
-            //         style: ButtonStyle(
-            //           backgroundColor: MaterialStateProperty.all(
-            //             const Color(0xff8f7a66),
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //     SizedBox(
-            //       width: toggleWidth,
-            //       height: toggleHeight,
-            //       child: ElevatedButton(
-            //         onPressed: () => newGame(),
-            //         child: Text(
-            //           'New Game',
-            //         ),
-            //         style: ButtonStyle(
-            //           backgroundColor: MaterialStateProperty.all(
-            //             const Color(0xff8f7a66),
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //   ],
-            // ),
-          ],
-        ),
+                  SizedBox(
+                    width: 25.w,
+                  ),
+                ],
+              )
+            ],
+          );
+        }),
         BoardWidget(
           moveLeft: () => setState(() => _board.moveLeft()),
           moveRight: () => setState(() => _board.moveRight()),
