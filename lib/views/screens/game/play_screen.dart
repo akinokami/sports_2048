@@ -70,11 +70,11 @@ class _PlayScreenState extends State<PlayScreen> {
                                 Checkbox(
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(6)),
-                                  activeColor: AppTheme.green,
+                                  activeColor: const Color(0xff8f7a66),
                                   side: BorderSide(
                                     width: 1.5,
                                     color: isChecked
-                                        ? AppTheme.green
+                                        ? const Color(0xff8f7a66)
                                         : Colors.black,
                                   ),
                                   value: isChecked,
@@ -100,7 +100,7 @@ class _PlayScreenState extends State<PlayScreen> {
                                   backgroundColor:
                                       MaterialStateColor.resolveWith((states) =>
                                           isAccepted
-                                              ? AppTheme.green
+                                              ? const Color(0xff8f7a66)
                                               : AppTheme.greyTicket)),
                               // ignore: sort_child_properties_last
                               child: CustomText(

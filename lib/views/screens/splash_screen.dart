@@ -22,12 +22,14 @@ class SplashScreen extends StatelessWidget {
           children: [
             Image.asset(
               'assets/images/four.webp',
-              height: 80.h,
+              height: 100.h,
             ),
             SizedBox(height: 30.h),
             CustomText(
               text: '2048',
-              size: 14.sp,
+              size: 24.sp,
+              fontWeight: FontWeight.bold,
+              textColor: Colors.grey.shade700,
             ),
             SizedBox(height: 30.h),
             const CircularProgressIndicator(
