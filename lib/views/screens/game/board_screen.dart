@@ -80,19 +80,24 @@ class _BoardScreenState extends State<BoardScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                _board.gameOver()
-                    ? 'Game Over'
+              CustomText(
+                text: _board.gameOver()
+                    ? 'game_over'.tr
                     : _board.gameVictory()
-                        ? 'Game Victory'
+                        ? 'victory'.tr
                         : '',
+                fontWeight: FontWeight.bold,
               ),
-              Text(
-                _board.gameOver()
-                    ? 'Press New Game Button To Start again!'
+              SizedBox(
+                height: 10.h,
+              ),
+              CustomText(
+                text: _board.gameOver()
+                    ? 'press_restart_to_start'.tr
                     : _board.gameVictory()
-                        ? 'Congratulation You Win The Game!'
+                        ? 'win_game'.tr
                         : '',
+                fontWeight: FontWeight.w500,
               ),
             ],
           ),

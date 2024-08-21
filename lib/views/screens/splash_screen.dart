@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:sports_2048/utils/colors.dart';
 
 import '../../controller/splash_controller.dart';
-import '../../utils/app_theme.dart';
 import '../widgets/custom_text.dart';
 
 class SplashScreen extends StatelessWidget {
