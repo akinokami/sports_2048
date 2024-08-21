@@ -108,13 +108,17 @@ class _EightBoardScreenState extends State<EightBoardScreen> {
       );
     }
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        LayoutBuilder(
-            builder: (BuildContext context, BoxConstraints constraints) {
-          if (constraints.maxWidth >= 600) {
-            return Column(
+    return LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+      reCalculateSize();
+      Future.delayed(const Duration(microseconds: 500), () {
+        setState(() {});
+      });
+      if (constraints.maxWidth >= 600) {
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Column(
               children: [
                 CustomText(
                   text: '2048',
@@ -203,9 +207,21 @@ class _EightBoardScreenState extends State<EightBoardScreen> {
                   ],
                 ),
               ],
-            );
-          }
-          return Column(
+            ),
+            BoardWidget(
+              moveLeft: () => setState(() => _board.moveLeft()),
+              moveRight: () => setState(() => _board.moveRight()),
+              moveUp: () => setState(() => _board.moveUp()),
+              moveDown: () => setState(() => _board.moveDown()),
+              children: children,
+            ),
+          ],
+        );
+      }
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Column(
             children: [
               CustomText(
                 text: '2048',
@@ -274,16 +290,16 @@ class _EightBoardScreenState extends State<EightBoardScreen> {
                 ],
               )
             ],
-          );
-        }),
-        BoardWidget(
-          moveLeft: () => setState(() => _board.moveLeft()),
-          moveRight: () => setState(() => _board.moveRight()),
-          moveUp: () => setState(() => _board.moveUp()),
-          moveDown: () => setState(() => _board.moveDown()),
-          children: children,
-        ),
-      ],
-    );
+          ),
+          BoardWidget(
+            moveLeft: () => setState(() => _board.moveLeft()),
+            moveRight: () => setState(() => _board.moveRight()),
+            moveUp: () => setState(() => _board.moveUp()),
+            moveDown: () => setState(() => _board.moveDown()),
+            children: children,
+          ),
+        ],
+      );
+    });
   }
 }
