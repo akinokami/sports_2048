@@ -49,71 +49,71 @@ class TileWidget extends StatelessWidget {
           child: (tileValue == 2)
               ? Icon(
                   Icons.sports_soccer,
-                  color: Colors.grey.withOpacity(0.2),
+                  color: Colors.grey.withOpacity(0.4),
                   size: 80.sp,
                 )
               : (tileValue == 4)
                   ? Icon(
                       Icons.sports_basketball,
-                      color: Colors.grey.withOpacity(0.2),
+                      color: Colors.grey.withOpacity(0.4),
                       size: 80.sp,
                     )
                   : (tileValue == 8)
                       ? Icon(
                           Icons.sports_football,
-                          color: Colors.grey.withOpacity(0.2),
+                          color: Colors.grey.withOpacity(0.4),
                           size: 80.sp,
                         )
                       : (tileValue == 16)
                           ? Icon(
                               Icons.sports_tennis,
-                              color: Colors.white.withOpacity(0.2),
+                              color: Colors.white.withOpacity(0.4),
                               size: 80.sp,
                             )
                           : (tileValue == 32)
                               ? Icon(
                                   Icons.sports_hockey,
-                                  color: Colors.white.withOpacity(0.2),
+                                  color: Colors.white.withOpacity(0.4),
                                   size: 80.sp,
                                 )
                               : (tileValue == 64)
                                   ? Icon(
                                       Icons.sports_cricket,
-                                      color: Colors.white.withOpacity(0.2),
+                                      color: Colors.white.withOpacity(0.4),
                                       size: 80.sp,
                                     )
                                   : (tileValue == 128)
                                       ? Icon(
                                           Icons.sports_rugby,
-                                          color: Colors.white.withOpacity(0.3),
+                                          color: Colors.white.withOpacity(0.4),
                                           size: 80.sp,
                                         )
                                       : (tileValue == 256)
                                           ? Icon(
                                               Icons.sports_mma,
                                               color:
-                                                  Colors.white.withOpacity(0.2),
+                                                  Colors.white.withOpacity(0.4),
                                               size: 80.sp,
                                             )
                                           : (tileValue == 512)
                                               ? Icon(
                                                   Icons.sports_volleyball,
                                                   color: Colors.white
-                                                      .withOpacity(0.2),
+                                                      .withOpacity(0.4),
                                                   size: 80.sp,
                                                 )
                                               : (tileValue == 1024)
                                                   ? Icon(
                                                       Icons.sports_baseball,
                                                       color: Colors.white
-                                                          .withOpacity(0.2),
+                                                          .withOpacity(0.4),
                                                       size: 80.sp,
                                                     )
                                                   : (tileValue == 2048)
                                                       ? Icon(
                                                           Icons.sports_golf,
                                                           color: Colors.white
-                                                              .withOpacity(0.2),
+                                                              .withOpacity(0.4),
                                                           size: 80.sp,
                                                         )
                                                       : Container(),

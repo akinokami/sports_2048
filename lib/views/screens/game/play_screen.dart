@@ -18,6 +18,7 @@ import '../../../controller/sound_controller.dart';
 import '../../../utils/app_theme.dart';
 import '../../../utils/global.dart';
 import '../../widgets/custom_text.dart';
+import '../../widgets/sports_widget.dart';
 
 class PlayScreen extends StatefulWidget {
   const PlayScreen({super.key});
@@ -148,208 +149,221 @@ class _PlayScreenState extends State<PlayScreen> {
           //     fit: BoxFit.cover,
           //   ),
           // ),
-          child: Padding(
-            padding: EdgeInsets.all(10.w),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Stack(
+            children: [
+              const SportsWidget(),
+              Padding(
+                padding: EdgeInsets.all(10.w),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CustomGameButton(
+                          onTap: () {
+                            exit(0);
+                          },
+                          height: 35.w,
+                          width: 35.w,
+                          icon: Icons.close,
+                          iconColor: AppTheme.white,
+                          color1: Colors.red,
+                          color2: Colors.red.shade300,
+                          color3: Colors.red,
+                        ),
+                        CustomGameButton(
+                          onTap: () {
+                            Get.to(() => const SettingScreen());
+                          },
+                          height: 35.w,
+                          width: 35.w,
+                          icon: Icons.settings,
+                          iconColor: AppTheme.white,
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 120.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              selectedGame = 4;
+                            });
+                          },
+                          child: Column(
+                            children: [
+                              selectedGame == 4
+                                  ? Image.asset(
+                                      'assets/images/four.webp',
+                                      height: 100.h,
+                                    )
+                                  : ColorFiltered(
+                                      colorFilter: ColorFilter.mode(
+                                        Colors.grey.withOpacity(
+                                            0.5), // Adjust the opacity to control brightness
+                                        BlendMode
+                                            .darken, // This darkens the image
+                                      ),
+                                      child: Image.asset(
+                                        'assets/images/four.webp',
+                                        height: 100.h,
+                                      ),
+                                    ),
+                              SizedBox(height: 10.h),
+                              CustomText(
+                                text: '4 x 4',
+                                size: 16.sp,
+                                fontWeight: FontWeight.w500,
+                                textColor: selectedGame == 4
+                                    ? Colors.black
+                                    : Colors.grey,
+                              ),
+                            ],
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              selectedGame = 5;
+                            });
+                          },
+                          child: Column(
+                            children: [
+                              selectedGame == 5
+                                  ? Image.asset(
+                                      'assets/images/five.webp',
+                                      height: 100.h,
+                                    )
+                                  : ColorFiltered(
+                                      colorFilter: ColorFilter.mode(
+                                        Colors.grey.withOpacity(
+                                            0.5), // Adjust the opacity to control brightness
+                                        BlendMode
+                                            .darken, // This darkens the image
+                                      ),
+                                      child: Image.asset(
+                                        'assets/images/five.webp',
+                                        height: 100.h,
+                                      ),
+                                    ),
+                              SizedBox(height: 10.h),
+                              CustomText(
+                                text: '5 x 5',
+                                size: 16.sp,
+                                fontWeight: FontWeight.w500,
+                                textColor: selectedGame == 5
+                                    ? Colors.black
+                                    : Colors.grey,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              selectedGame = 6;
+                            });
+                          },
+                          child: Column(
+                            children: [
+                              selectedGame == 6
+                                  ? Image.asset(
+                                      'assets/images/six.webp',
+                                      height: 100.h,
+                                    )
+                                  : ColorFiltered(
+                                      colorFilter: ColorFilter.mode(
+                                        Colors.grey.withOpacity(
+                                            0.5), // Adjust the opacity to control brightness
+                                        BlendMode
+                                            .darken, // This darkens the image
+                                      ),
+                                      child: Image.asset(
+                                        'assets/images/six.webp',
+                                        height: 100.h,
+                                      ),
+                                    ),
+                              SizedBox(height: 10.h),
+                              CustomText(
+                                text: '6 x 6',
+                                size: 16.sp,
+                                fontWeight: FontWeight.w500,
+                                textColor: selectedGame == 6
+                                    ? Colors.black
+                                    : Colors.grey,
+                              ),
+                            ],
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              selectedGame = 8;
+                            });
+                          },
+                          child: Column(
+                            children: [
+                              selectedGame == 8
+                                  ? Image.asset(
+                                      'assets/images/eight.webp',
+                                      height: 100.h,
+                                    )
+                                  : ColorFiltered(
+                                      colorFilter: ColorFilter.mode(
+                                        Colors.grey.withOpacity(
+                                            0.5), // Adjust the opacity to control brightness
+                                        BlendMode
+                                            .darken, // This darkens the image
+                                      ),
+                                      child: Image.asset(
+                                        'assets/images/eight.webp',
+                                        height: 100.h,
+                                      ),
+                                    ),
+                              SizedBox(height: 10.h),
+                              CustomText(
+                                text: '8 x 8',
+                                size: 16.sp,
+                                fontWeight: FontWeight.w500,
+                                textColor: selectedGame == 8
+                                    ? Colors.black
+                                    : Colors.grey,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 40.h),
                     CustomGameButton(
                       onTap: () {
-                        exit(0);
+                        if (selectedGame == 4) {
+                          Get.to(() => const GameScreen());
+                        } else if (selectedGame == 5) {
+                          Get.to(() => const FiveFiveScreen());
+                        } else if (selectedGame == 6) {
+                          Get.to(() => const SixSixScreen());
+                        } else {
+                          Get.to(() => const EigntEightScreen());
+                        }
                       },
-                      height: 35.w,
-                      width: 35.w,
-                      icon: Icons.close,
-                      iconColor: AppTheme.white,
-                      color1: Colors.red,
-                      color2: Colors.red.shade300,
-                      color3: Colors.red,
-                    ),
-                    CustomGameButton(
-                      onTap: () {
-                        Get.to(() => const SettingScreen());
-                      },
-                      height: 35.w,
-                      width: 35.w,
-                      icon: Icons.settings,
-                      iconColor: AppTheme.white,
+                      width: 0.2.sh,
+                      text: 'play'.tr,
+                      textColor: AppTheme.white,
                     ),
                   ],
                 ),
-                SizedBox(height: 120.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          selectedGame = 4;
-                        });
-                      },
-                      child: Column(
-                        children: [
-                          selectedGame == 4
-                              ? Image.asset(
-                                  'assets/images/four.webp',
-                                  height: 100.h,
-                                )
-                              : ColorFiltered(
-                                  colorFilter: ColorFilter.mode(
-                                    Colors.grey.withOpacity(
-                                        0.5), // Adjust the opacity to control brightness
-                                    BlendMode.darken, // This darkens the image
-                                  ),
-                                  child: Image.asset(
-                                    'assets/images/four.webp',
-                                    height: 100.h,
-                                  ),
-                                ),
-                          SizedBox(height: 10.h),
-                          CustomText(
-                            text: '4 x 4',
-                            size: 16.sp,
-                            fontWeight: FontWeight.w500,
-                            textColor:
-                                selectedGame == 4 ? Colors.black : Colors.grey,
-                          ),
-                        ],
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          selectedGame = 5;
-                        });
-                      },
-                      child: Column(
-                        children: [
-                          selectedGame == 5
-                              ? Image.asset(
-                                  'assets/images/five.webp',
-                                  height: 100.h,
-                                )
-                              : ColorFiltered(
-                                  colorFilter: ColorFilter.mode(
-                                    Colors.grey.withOpacity(
-                                        0.5), // Adjust the opacity to control brightness
-                                    BlendMode.darken, // This darkens the image
-                                  ),
-                                  child: Image.asset(
-                                    'assets/images/five.webp',
-                                    height: 100.h,
-                                  ),
-                                ),
-                          SizedBox(height: 10.h),
-                          CustomText(
-                            text: '5 x 5',
-                            size: 16.sp,
-                            fontWeight: FontWeight.w500,
-                            textColor:
-                                selectedGame == 5 ? Colors.black : Colors.grey,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          selectedGame = 6;
-                        });
-                      },
-                      child: Column(
-                        children: [
-                          selectedGame == 6
-                              ? Image.asset(
-                                  'assets/images/six.webp',
-                                  height: 100.h,
-                                )
-                              : ColorFiltered(
-                                  colorFilter: ColorFilter.mode(
-                                    Colors.grey.withOpacity(
-                                        0.5), // Adjust the opacity to control brightness
-                                    BlendMode.darken, // This darkens the image
-                                  ),
-                                  child: Image.asset(
-                                    'assets/images/six.webp',
-                                    height: 100.h,
-                                  ),
-                                ),
-                          SizedBox(height: 10.h),
-                          CustomText(
-                            text: '6 x 6',
-                            size: 16.sp,
-                            fontWeight: FontWeight.w500,
-                            textColor:
-                                selectedGame == 6 ? Colors.black : Colors.grey,
-                          ),
-                        ],
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          selectedGame = 8;
-                        });
-                      },
-                      child: Column(
-                        children: [
-                          selectedGame == 8
-                              ? Image.asset(
-                                  'assets/images/eight.webp',
-                                  height: 100.h,
-                                )
-                              : ColorFiltered(
-                                  colorFilter: ColorFilter.mode(
-                                    Colors.grey.withOpacity(
-                                        0.5), // Adjust the opacity to control brightness
-                                    BlendMode.darken, // This darkens the image
-                                  ),
-                                  child: Image.asset(
-                                    'assets/images/eight.webp',
-                                    height: 100.h,
-                                  ),
-                                ),
-                          SizedBox(height: 10.h),
-                          CustomText(
-                            text: '8 x 8',
-                            size: 16.sp,
-                            fontWeight: FontWeight.w500,
-                            textColor:
-                                selectedGame == 8 ? Colors.black : Colors.grey,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 40.h),
-                CustomGameButton(
-                  onTap: () {
-                    if (selectedGame == 4) {
-                      Get.to(() => const GameScreen());
-                    } else if (selectedGame == 5) {
-                      Get.to(() => const FiveFiveScreen());
-                    } else if (selectedGame == 6) {
-                      Get.to(() => const SixSixScreen());
-                    } else {
-                      Get.to(() => const EigntEightScreen());
-                    }
-                  },
-                  width: 0.2.sh,
-                  text: 'play'.tr,
-                  textColor: AppTheme.white,
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

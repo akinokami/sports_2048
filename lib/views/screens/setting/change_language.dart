@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:sports_2048/utils/colors.dart';
 import 'package:sports_2048/utils/constants.dart';
+import 'package:sports_2048/views/widgets/sports_widget.dart';
 
 import '../../../controller/language_controller.dart';
 import '../../../utils/app_theme.dart';
@@ -39,147 +40,154 @@ class ChangeLanguageScreen extends StatelessWidget {
           //     fit: BoxFit.cover,
           //   ),
           // ),
-          child: Column(
+          child: Stack(
             children: [
-              Padding(
-                padding: EdgeInsets.all(10.w),
-                child: Row(
-                  children: [
-                    CustomGameButton(
-                      onTap: () {
-                        Navigator.of(context).pop();
-                      },
-                      height: 35.w,
-                      width: 35.w,
-                      icon: Icons.arrow_back,
-                      iconColor: AppTheme.white,
+              const SportsWidget(),
+              Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(10.w),
+                    child: Row(
+                      children: [
+                        CustomGameButton(
+                          onTap: () {
+                            Navigator.of(context).pop();
+                          },
+                          height: 35.w,
+                          width: 35.w,
+                          icon: Icons.arrow_back,
+                          iconColor: AppTheme.white,
+                        ),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        CustomText(
+                          text: 'change_language'.tr,
+                          size: 15.sp,
+                          fontWeight: FontWeight.w500,
+                        )
+                      ],
                     ),
-                    SizedBox(
-                      width: 10.w,
-                    ),
-                    CustomText(
-                      text: 'change_language'.tr,
-                      size: 15.sp,
-                      fontWeight: FontWeight.w500,
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(height: 10.h),
-              Padding(
-                padding: EdgeInsets.all(10.w),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Obx(
-                      () => GestureDetector(
-                        onTap: () {
-                          languageController.changeLanguage("en", "US");
-                        },
-                        child: CustomCard(
-                          widget: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
+                  ),
+                  SizedBox(height: 10.h),
+                  Padding(
+                    padding: EdgeInsets.all(10.w),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Obx(
+                          () => GestureDetector(
+                            onTap: () {
+                              languageController.changeLanguage("en", "US");
+                            },
+                            child: CustomCard(
+                              widget: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Image.asset(
-                                    "assets/images/usa.webp",
-                                    width: 20.w,
-                                    height: 20.h,
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/usa.webp",
+                                        width: 20.w,
+                                        height: 20.h,
+                                      ),
+                                      SizedBox(
+                                        width: 10.w,
+                                      ),
+                                      const CustomText(
+                                        text: "English",
+                                      )
+                                    ],
                                   ),
-                                  SizedBox(
-                                    width: 10.w,
+                                  Icon(
+                                    languageController.lang.value ==
+                                            Language.en.name
+                                        ? Icons.check_circle
+                                        : Icons.check_circle_outline,
+                                    color: languageController.lang.value ==
+                                            Language.en.name
+                                        ? AppTheme.green
+                                        : AppTheme.grey,
                                   ),
-                                  const CustomText(
-                                    text: "English",
-                                  )
                                 ],
                               ),
-                              Icon(
-                                languageController.lang.value ==
-                                        Language.en.name
-                                    ? Icons.check_circle
-                                    : Icons.check_circle_outline,
-                                color: languageController.lang.value ==
-                                        Language.en.name
-                                    ? AppTheme.green
-                                    : AppTheme.grey,
-                              ),
-                            ],
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                    // Obx(
-                    //   () => GestureDetector(
-                    //     onTap: () {
-                    //       languageController.changeLanguage("zh", "CN");
-                    //     },
-                    //     child: Card(
-                    //       color: cardColor,
-                    //       child: ListTile(
-                    //         leading: Image.asset(
-                    //           "assets/images/china.webp",
-                    //           width: 20.w,
-                    //           height: 20.h,
-                    //         ),
-                    //         title: CustomText(
-                    //           text: "中国人",
-                    //           //color: lightWhiteColor,
-                    //         ),
-                    //         trailing: Icon(
-                    //           languageController.language.value == "zh"
-                    //               ? Icons.check_circle
-                    //               : Icons.check_circle_outline,
-                    //           color: languageController.language.value == "zh"
-                    //               ? secondaryColor
-                    //               : greyColor,
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
-                    Obx(
-                      () => GestureDetector(
-                        onTap: () {
-                          languageController.changeLanguage("vi", "VN");
-                        },
-                        child: CustomCard(
-                          widget: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
+                        // Obx(
+                        //   () => GestureDetector(
+                        //     onTap: () {
+                        //       languageController.changeLanguage("zh", "CN");
+                        //     },
+                        //     child: Card(
+                        //       color: cardColor,
+                        //       child: ListTile(
+                        //         leading: Image.asset(
+                        //           "assets/images/china.webp",
+                        //           width: 20.w,
+                        //           height: 20.h,
+                        //         ),
+                        //         title: CustomText(
+                        //           text: "中国人",
+                        //           //color: lightWhiteColor,
+                        //         ),
+                        //         trailing: Icon(
+                        //           languageController.language.value == "zh"
+                        //               ? Icons.check_circle
+                        //               : Icons.check_circle_outline,
+                        //           color: languageController.language.value == "zh"
+                        //               ? secondaryColor
+                        //               : greyColor,
+                        //         ),
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
+                        Obx(
+                          () => GestureDetector(
+                            onTap: () {
+                              languageController.changeLanguage("vi", "VN");
+                            },
+                            child: CustomCard(
+                              widget: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Image.asset(
-                                    "assets/images/vietnam.webp",
-                                    width: 20.w,
-                                    height: 20.h,
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/vietnam.webp",
+                                        width: 20.w,
+                                        height: 20.h,
+                                      ),
+                                      SizedBox(
+                                        width: 10.w,
+                                      ),
+                                      const CustomText(
+                                        text: "Tiếng Việt",
+                                      )
+                                    ],
                                   ),
-                                  SizedBox(
-                                    width: 10.w,
+                                  Icon(
+                                    languageController.lang.value ==
+                                            Language.vi.name
+                                        ? Icons.check_circle
+                                        : Icons.check_circle_outline,
+                                    color: languageController.lang.value ==
+                                            Language.vi.name
+                                        ? AppTheme.green
+                                        : AppTheme.grey,
                                   ),
-                                  const CustomText(
-                                    text: "Tiếng Việt",
-                                  )
                                 ],
                               ),
-                              Icon(
-                                languageController.lang.value ==
-                                        Language.vi.name
-                                    ? Icons.check_circle
-                                    : Icons.check_circle_outline,
-                                color: languageController.lang.value ==
-                                        Language.vi.name
-                                    ? AppTheme.green
-                                    : AppTheme.grey,
-                              ),
-                            ],
+                            ),
                           ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ],
           ),
