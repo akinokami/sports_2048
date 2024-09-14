@@ -114,6 +114,24 @@ class EnLanguage {
     'are_you_sure_to_restart': 'Are you sure to restart game?',
     'press_restart_to_start': 'Press Restart Button To Start again!',
     'victory': 'Victory',
-    'win_game': 'Congratulation You Win The Game!'
+    'win_game': 'Congratulation You Win The Game!',
+    'how_to_play': "How To Play?",
+    'how_play': '''1.Grid Layout:
+\t\t\tThe game is played on a 4x4 grid.Each tile has a number, which is a power of two (e.g., 2, 4, 8, 16, 32, etc.).
+
+2.Starting the Game:
+\t\t\tThe game begins with two tiles randomly placed on the grid. These tiles will either be a 2 or a 4.
+
+3.Moving Tiles:
+\t\t\tSwipe in one of four directions (up, down, left, right) to move all the tiles on the grid.When two tiles with the same number collide, they combine into one tile, which becomes their sum. For example, two adjacent 2 tiles will combine to form a 4, two 4 tiles will form an 8, and so on.
+
+4.New Tile Generation:
+\t\t\tAfter every move, a new tile (either a 2 or a 4) will appear in a random empty spot on the grid.
+
+5.Winning the Game:
+\t\t\tThe game is won when you successfully create a tile with the number 2048.You can continue playing even after reaching 2048 to aim for a higher score.
+
+6.Game Over:
+\t\t\tThe game ends when there are no possible moves left on the grid, meaning no tiles can be merged and the grid is full.'''
   };
 }

@@ -10,6 +10,7 @@ import 'package:sports_2048/views/screens/game/eight_eight/eight_eight_screen.da
 import 'package:sports_2048/views/screens/game/five_five/five_five_screen.dart';
 import 'package:sports_2048/views/screens/game/game_screen.dart';
 import 'package:sports_2048/views/screens/game/six_six/six_six_screen.dart';
+import 'package:sports_2048/views/screens/setting/how_play_screen.dart';
 import 'package:sports_2048/views/screens/setting/setting_screen.dart';
 import 'package:sports_2048/views/widgets/custom_game_button.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -358,6 +359,17 @@ class _PlayScreenState extends State<PlayScreen> {
                       },
                       width: 0.2.sh,
                       text: 'play'.tr,
+                      textColor: AppTheme.white,
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    CustomGameButton(
+                      onTap: () {
+                        Get.to(() => const HowPlayScreen());
+                      },
+                      width: 0.2.sh,
+                      text: 'how_to_play'.tr,
                       textColor: AppTheme.white,
                     ),
                   ],
